@@ -35,6 +35,13 @@ jobs:
             - name: Create the PHAR file.
               run: box compile --quiet
 
+            - name: List files after build
+              run: |
+                  echo "Current directory:"
+                  pwd
+                  echo "Contents:"
+                  ls -R
+
             - name: Commit PHAR
               run: |
                   git config user.name "GitHub Actions"
