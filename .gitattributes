@@ -8,3 +8,4 @@
 /phpstan.neon export-ignore
 /pint.json export-ignore
 /zed-pint export-ignore
+/cghooks.lock export-ignore
