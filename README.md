@@ -7,6 +7,7 @@ composer global require mpietrucha/zed-laravel-pint
 ## Usage
 
 ```json
+// ~/.config/zed/settings.json
 "languages": {
     "PHP": {
         "formatter": {
