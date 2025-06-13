@@ -1,3 +1,4 @@
 vendor
 composer.lock
 cghooks.lock
+.phpactor.json

@@ -3,7 +3,6 @@
 /.gitignore export-ignore
 /README.md export-ignore
 /src export-ignore
-/.phpactor.json export-ignore
 /box.json export-ignore
 /phpstan.neon export-ignore
 /pint.json export-ignore
