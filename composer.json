@@ -31,15 +31,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
-        "brainmaestro/composer-git-hooks": "^3.0",
         "phpstan/phpstan": "^2.1",
         "symfony/var-dumper": "^7.3"
-    },
-    "extra": {
-        "hooks": {
-            "pre-commit": [
-                "box compile"
-            ]
-        }
     }
 }
