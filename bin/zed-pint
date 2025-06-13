@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+require_once $GLOBALS['_composer_autoload_path'] ?? __DIR__ . '/../vendor/autoload.php';
+
+use Mpietrucha\Zed\Pint\Compiler;
+use Mpietrucha\Zed\Pint\Environment\Argv;
+
+Compiler::build()->emit();

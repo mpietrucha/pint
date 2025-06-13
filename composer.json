@@ -1,0 +1,37 @@
+{
+    "version": "1.0.0",
+    "name": "mpietrucha/zed-laravel-pint",
+    "description": "Format code inside Zed editor using Laravel Pint.",
+    "license": "MIT",
+    "bin": "bin/zed-pint",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Michał Pietrucha",
+            "email": "michal.pietrucha@off-site.pl"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "composer": "^2.8.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mpietrucha\\Zed\\Pint\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "illuminate/support": "^12.17",
+        "laravel/pint": "^1.22",
+        "nyholm/psr7": "^1.8",
+        "phpstan/phpstan": "^2.1",
+        "psr/http-message": "^2.0",
+        "symfony/process": "^7.3",
+        "symfony/var-dumper": "^7.3"
+    }
+}
