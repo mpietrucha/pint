@@ -38,7 +38,7 @@
     "extra": {
         "hooks": {
             "pre-commit": [
-                "box compile",
+                "box compile --quiet",
                 "git add bin/zed-pint"
             ]
         }
