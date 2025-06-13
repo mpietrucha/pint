@@ -35,8 +35,10 @@ jobs:
             - name: Create the PHAR file.
               run: box compile --quiet
 
-            - name: Auto-commit PHAR
-              uses: stefanzweifel/git-auto-commit-action@v5
-              with:
-                  commit_message: "Build PHAR for ${{ github.ref_name }}"
-                  file_pattern: bin/zed-pint
+            - name: Commit PHAR to repo
+              run: |
+                  git config user.name "GitHub Actions"
+                  git config user.email "actions@github.com"
+                  git add bin/zed-pint
+                  git commit -m "Build PHAR for $GITHUB_REF_NAME [skip ci]" || echo "No changes to commit"
+                  git push origin HEAD:refs/heads/${GITHUB_REF##*/}
