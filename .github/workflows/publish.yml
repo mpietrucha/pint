@@ -35,7 +35,7 @@ jobs:
             - name: Create the PHAR file.
               run: box compile --quiet
 
-            - name: Commit PHAR to repo
+            - name: Commit PHAR
               run: |
                   git config user.name "GitHub Actions"
                   git config user.email "actions@github.com"
