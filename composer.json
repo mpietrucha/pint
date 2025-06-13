@@ -42,22 +42,24 @@
     "extra": {
         "hooks": {
             "pre-commit": [
-                "@compile",
-                "@compile:clear"
+                "@composer compile",
+                "@composer compile:clear"
             ]
         }
     },
     "scripts": {
         "post-install-cmd": [
-            "cghooks add --ignore-lock",
+            "@hooks:add",
             "@prettier:config"
         ],
         "post-update-cmd": [
-            "cghooks update",
+            "@hooks:update",
             "composer normalize"
         ],
         "compile": "box compile --quiet",
         "compile:clear": "git add bin/zed-pint > /dev/null",
+        "hooks:add": "cghooks add --ignore-lock",
+        "hooks:update": "cghooks update",
         "prettier:config": "curl -sSL https://raw.githubusercontent.com/mpietrucha/prettier-config-synchronizer/refs/heads/main/synchronize | bash"
     }
 }
