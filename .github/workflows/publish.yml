@@ -35,8 +35,8 @@ jobs:
             - name: Create the PHAR file.
               run: box compile --quiet
 
-            - name: Upload the PHAR artifact
-              uses: actions/upload-artifact@v4
+            - name: Auto-commit PHAR
+              uses: stefanzweifel/git-auto-commit-action@v5
               with:
-                  name: zed-pint
-                  path: bin/zed-pint
+                  commit_message: "Build PHAR for ${{ github.ref_name }}"
+                  file_pattern: bin/zed-pint
