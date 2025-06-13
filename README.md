@@ -1,7 +1,7 @@
 ## Instalation
 
 ```bash
-    composer global require mpietrucha/zed-laravel-pint
+composer global require mpietrucha/zed-laravel-pint
 ```
 
 ## Usage
