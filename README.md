@@ -10,7 +10,7 @@ composer mpietrucha/zed-laravel-pint
 
 ## Usage
 
-Configure the editor settings as in the example below:
+Configure your editor settings as in the example below:
 
 ```json
 "languages": {
