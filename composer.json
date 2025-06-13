@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "mpietrucha/zed-laravel-pint",
     "description": "Format code inside Zed editor using Laravel Pint.",
     "license": "MIT",
