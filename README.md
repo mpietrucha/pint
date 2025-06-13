@@ -1,13 +1,18 @@
-## Instalation
+## Installation
+
+> **Requires [PHP 8.4+](https://php.net/releases/) and [Composer 2.8+](https://getcomposer.org)**
+
+Require extension using [Composer](https://getcomposer.org):
 
 ```bash
-composer global require mpietrucha/zed-laravel-pint
+composer mpietrucha/zed-laravel-pint
 ```
 
 ## Usage
 
+Configure the editor settings as in the example below:
+
 ```json
-// ~/.config/zed/settings.json
 "languages": {
     "PHP": {
         "formatter": {
