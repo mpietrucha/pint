@@ -39,7 +39,7 @@
         "hooks": {
             "pre-commit": [
                 "box compile --quiet",
-                "git add bin/zed-pint"
+                "git add bin/zed-pint > /dev/null"
             ]
         }
     }
