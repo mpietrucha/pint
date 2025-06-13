@@ -1,4 +1,7 @@
 {
+    "chmod": "0755",
     "main": "zed-pint",
-    "output": "bin/zen-pint"
+    "output": "bin/zen-pint",
+    "compression": "GZ",
+    "compactors": ["KevinGH\\Box\\Compactor\\Php", "KevinGH\\Box\\Compactor\\Json"]
 }

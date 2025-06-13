@@ -1,16 +1,9 @@
 name: Publish the released PHAR
 
 on:
-    release:
-        types: [created]
-    workflow_dispatch:
-        inputs:
-            tag:
-                description: "Tag release version"
-                required: true
-
-permissions:
-    contents: write
+    push:
+        tags:
+            - "v*"
 
 jobs:
     publish:
@@ -21,11 +14,7 @@ jobs:
         steps:
             - name: Extract the tag version
               id: tag
-              run: |
-                  if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-                    GITHUB_REF=${{ github.event.inputs.tag }}
-                  fi
-                  echo "tag=${GITHUB_REF##*v}" >> "$GITHUB_OUTPUT"
+              run: echo "tag=${GITHUB_REF##*v}" >> "$GITHUB_OUTPUT"
 
             - name: Checkout the code
               uses: actions/checkout@v4
@@ -51,8 +40,3 @@ jobs:
               with:
                   name: zed-pint
                   path: bin/zed-pint
-
-            - name: Upload the PHAR to release
-              run: gh release upload v${{ steps.tag.outputs.tag }} bin/zed-pint
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
