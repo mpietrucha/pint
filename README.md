@@ -1,3 +1,9 @@
+## Instalation
+
+```bash
+    composer global require mpietrucha/zed-laravel-pint
+```
+
 ## Usage
 
 ```json
