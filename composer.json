@@ -60,6 +60,7 @@
         "compile:clear": "git add bin/zed-pint > /dev/null",
         "hooks:add": "cghooks add --ignore-lock",
         "hooks:update": "cghooks update",
+        "lint": "pint -v",
         "prettier:config": "curl -sSL https://raw.githubusercontent.com/mpietrucha/prettier-config-synchronizer/refs/heads/main/synchronize | bash",
         "test": [
             "@test:lint",
