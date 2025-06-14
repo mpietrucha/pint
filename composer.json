@@ -42,7 +42,8 @@
     "extra": {
         "hooks": {
             "pre-commit": [
-                "composer compile --quiet"
+                "composer compile --quiet",
+                "composer compile:clear --quiet"
             ]
         }
     },
@@ -55,6 +56,7 @@
             "@hooks:update",
             "@composer normalize"
         ],
+        "compile:clear": "git add bin/zed-pint > /dev/null",
         "compile": "./compile",
         "hooks:add": "cghooks add --ignore-lock",
         "hooks:update": "cghooks update",
