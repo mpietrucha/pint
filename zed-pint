@@ -3,12 +3,11 @@
 
 $autoload = array_filter([
     $GLOBALS['_composer_autoload_path'] ?? '',
-    __DIR__ . '/../../vendor/autoload.php',
-    __DIR__ . '/../vendor/autoload.php',
-    __DIR__ . '/vendor/autoload.php'
+    __DIR__ . '/vendor/autoload.php',
+    __DIR__ . '/../../autoload.php',
 ], is_file(...));
 
-require_once reset($autoload) ?: die('Missing autoloader');
+require_once end($autoload) ?: exit('Missing autoload');
 
 use Mpietrucha\Zed\Pint\Compiler;
 
