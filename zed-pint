@@ -3,6 +3,7 @@
 
 $autoload = array_filter([
     $GLOBALS['_composer_autoload_path'] ?? '',
+    __DIR__ . '/../../vendor/autoload.php',
     __DIR__ . '/../vendor/autoload.php',
     __DIR__ . '/vendor/autoload.php'
 ], is_file(...));
