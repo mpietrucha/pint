@@ -43,7 +43,7 @@
         "hooks": {
             "pre-commit": [
                 "composer compile --quiet",
-                "composer compile:clear --quiet"
+                "composer compile:clear"
             ]
         }
     },
