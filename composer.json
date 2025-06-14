@@ -56,8 +56,8 @@
             "@hooks:update",
             "@composer normalize"
         ],
-        "compile:clear": "git add bin/zed-pint > /dev/null",
         "compile": "./compile",
+        "compile:clear": "git add bin/zed-pint > /dev/null",
         "hooks:add": "cghooks add --ignore-lock",
         "hooks:update": "cghooks update",
         "prettier:config": "curl -sSL https://raw.githubusercontent.com/mpietrucha/prettier-config-synchronizer/refs/heads/main/synchronize | bash",
