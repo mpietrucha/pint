@@ -12,17 +12,17 @@
     ],
     "require": {
         "php": "^8.2",
-        "composer": "^2.8.9",
-        "illuminate/support": "^12.17",
-        "laravel/pint": "^1.22",
-        "nyholm/psr7": "^1.8",
-        "psr/http-message": "^2.0",
-        "symfony/process": "^7.3"
+        "composer": "^2.8.9"
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^3.0",
         "ergebnis/composer-normalize": "^2.47",
+        "illuminate/support": "^12.17",
+        "laravel/pint": "^1.22",
+        "nyholm/psr7": "^1.8",
         "phpstan/phpstan": "^2.1",
+        "psr/http-message": "^2.0",
+        "symfony/process": "^7.3",
         "symfony/var-dumper": "^7.3"
     },
     "minimum-stability": "dev",
@@ -42,8 +42,7 @@
     "extra": {
         "hooks": {
             "pre-commit": [
-                "composer compile --quiet",
-                "composer compile:clear"
+                "composer compile --quiet"
             ]
         }
     },
@@ -56,8 +55,7 @@
             "@hooks:update",
             "@composer normalize"
         ],
-        "compile": "box compile",
-        "compile:clear": "git add bin/zed-pint > /dev/null",
+        "compile": "./compile",
         "hooks:add": "cghooks add --ignore-lock",
         "hooks:update": "cghooks update",
         "prettier:config": "curl -sSL https://raw.githubusercontent.com/mpietrucha/prettier-config-synchronizer/refs/heads/main/synchronize | bash",
