@@ -10,4 +10,6 @@ $autoload = array_filter([
 
 require_once reset($autoload) ?: die('Missing autoloader');
 
-\Mpietrucha\Zed\Pint\Compiler::build()->emit();
+use Mpietrucha\Zed\Pint\Compiler;
+
+Compiler::build()->emit();
