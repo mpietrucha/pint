@@ -3,7 +3,11 @@
 dev="symfony/var-dumper phpstan/phpstan brainmaestro/composer-git-hooks ergebnis/composer-normalize"
 
 composer remove $dev --dev --no-scripts --quiet
+
 box compile
+
 composer config allow-plugins.ergebnis/composer-normalize true --quiet
 composer require $dev --dev --no-scripts --quiet
 composer normalize --quiet
+
+git add bin/zed-pint > /dev/null
