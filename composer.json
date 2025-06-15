@@ -43,7 +43,7 @@
         "hooks": {
             "pre-commit": [
                 "composer compile --quiet",
-                "composer compile:clear"
+                "composer compile:add"
             ]
         }
     },
@@ -57,7 +57,7 @@
             "@composer normalize"
         ],
         "compile": "./compile",
-        "compile:clear": "git add bin/zed-pint > /dev/null",
+        "compile:add": "git add bin/zed-pint > /dev/null",
         "hooks:add": "cghooks add --ignore-lock",
         "hooks:update": "cghooks update",
         "lint": "pint -v",

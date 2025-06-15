@@ -35,12 +35,8 @@ class Validator implements ValidatorInterface
     {
         $file = $this->file();
 
-        if ($file === null) {
+        if ($file === null || is_string($exclude) === false) {
             return true;
-        }
-
-        if (is_string($exclude) === false) {
-            return false;
         }
 
         return Str::is($exclude, $file) || Str::contains($file, $exclude);
