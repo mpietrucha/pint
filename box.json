@@ -1,8 +1,8 @@
 {
     "directories": ["src", "vendor"],
     "files": ["composer.json"],
-    "main": "zed-pint",
-    "output": "bin/zed-pint",
+    "main": "pint",
+    "output": "bin/pint",
     "compression": "GZ",
     "exclude-composer-files": false,
     "exclude-dev-files": false,

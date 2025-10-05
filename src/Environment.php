@@ -1,33 +1,37 @@
 <?php
 
-namespace Mpietrucha\Zed\Pint;
+namespace Mpietrucha\Pint;
 
-use Mpietrucha\Zed\Pint\Contracts\EnvironmentInterface;
-use Mpietrucha\Zed\Pint\Environment\Cwd;
-use Mpietrucha\Zed\Pint\Environment\File;
+use Mpietrucha\Pint\Contracts\ArgvInterface;
+use Mpietrucha\Pint\Contracts\ConfigInterface;
+use Mpietrucha\Pint\Contracts\EnvironmentInterface;
+use Mpietrucha\Pint\Contracts\ExecutableInterface;
+use Mpietrucha\Utility\Concerns\Creatable;
+use Mpietrucha\Utility\Contracts\CreatableInterface;
 
-final class Environment implements EnvironmentInterface
+class Environment implements CreatableInterface, EnvironmentInterface
 {
-    public function __construct(protected string $cwd, protected ?string $file = null)
-    {
+    use Creatable;
+
+    public function __construct(
+        protected ?ExecutableInterface $executable = null,
+        protected ?ArgvInterface $argv = null,
+        protected ?ConfigInterface $config = null
+    ) {
     }
 
-    public static function build(): static
+    public function executable(): ExecutableInterface
     {
-        $cwd = Cwd::get() ?? '';
-
-        $file = File::get();
-
-        return new self($cwd, $file);
+        return $this->executable ??= Environment\Executable::find();
     }
 
-    public function cwd(): string
+    public function argv(): ArgvInterface
     {
-        return $this->cwd;
+        return $this->argv ??= Environment\Argv::capture();
     }
 
-    public function file(): ?string
+    public function config(): ConfigInterface
     {
-        return $this->file;
+        return $this->config ??= Environment\Config::find();
     }
 }

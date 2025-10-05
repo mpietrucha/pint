@@ -1,16 +1,34 @@
 <?php
 
-namespace Mpietrucha\Zed\Pint\Environment;
+namespace Mpietrucha\Pint\Environment;
 
-use Illuminate\Support\Arr;
+use Mpietrucha\Pint\Contracts\ArgvInterface;
+use Mpietrucha\Utility\Collection;
 
-abstract class Argv
+/**
+ * @extends \Mpietrucha\Utility\Collection<int, mixed>
+ */
+class Argv extends Collection implements ArgvInterface
 {
+    protected ?string $path = null;
+
     /**
-     * @return string[]
+     * @param  array<int, mixed>  $argv
      */
-    public static function get(): array
+    public function __construct(array $argv)
     {
-        return Arr::array($_SERVER, 'argv');
+        parent::__construct($argv);
+
+        $this->path = Argv\Path::get($argv);
+    }
+
+    public static function capture(): static
+    {
+        return Argv\Input::capture() |> static::create(...);
+    }
+
+    public function path(): ?string
+    {
+        return $this->path;
     }
 }

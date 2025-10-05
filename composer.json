@@ -1,6 +1,6 @@
 {
-    "name": "mpietrucha/zed-laravel-pint",
-    "description": "Format code inside Zed editor using Laravel Pint.",
+    "name": "mpietrucha/pint",
+    "description": "Laravel Pint utils.",
     "license": "MIT",
     "type": "library",
     "version": "1.0.0",
@@ -11,17 +11,16 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.5",
         "composer": "^2.8.9"
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^3.0",
-        "ergebnis/composer-normalize": "^2.47",
-        "illuminate/support": "^12.17",
+        "ergebnis/composer-normalize": "^2.48",
         "laravel/pint": "^1.22",
-        "nyholm/psr7": "^1.8",
+        "mpietrucha/utility": "^1.0",
         "phpstan/phpstan": "^2.1",
-        "psr/http-message": "^2.0",
+        "symfony/console": "^7.3",
         "symfony/process": "^7.3",
         "symfony/var-dumper": "^7.3"
     },
@@ -29,10 +28,10 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Mpietrucha\\Zed\\Pint\\": "src/"
+            "Mpietrucha\\Pint\\": "src/"
         }
     },
-    "bin": "bin/zed-pint",
+    "bin": "bin/pint",
     "config": {
         "allow-plugins": {
             "ergebnis/composer-normalize": true
@@ -57,16 +56,16 @@
             "@composer normalize"
         ],
         "compile": "./compile",
-        "compile:add": "git add bin/zed-pint > /dev/null",
+        "compile:add": "git add bin/pint > /dev/null",
         "hooks:add": "cghooks add --ignore-lock",
         "hooks:update": "cghooks update",
-        "lint": "pint -v",
-        "prettier:config": "curl -sSL https://raw.githubusercontent.com/mpietrucha/prettier-config-synchronizer/refs/heads/main/synchronize | bash",
+        "lint": "pint --verbose --parallel",
+        "prettier:config": "curl -sSLO https://raw.githubusercontent.com/mpietrucha/prettier/refs/heads/main/dist/.prettierrc",
         "test": [
             "@test:lint",
             "@test:types"
         ],
-        "test:lint": "pint --test -v",
+        "test:lint": "@lint --test",
         "test:types": "phpstan analyse --ansi"
     }
 }

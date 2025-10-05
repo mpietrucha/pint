@@ -1,10 +1,12 @@
 <?php
 
-namespace Mpietrucha\Zed\Pint\Contracts;
+namespace Mpietrucha\Pint\Contracts;
 
 interface EnvironmentInterface
 {
-    public function cwd(): string;
+    public function executable(): ExecutableInterface;
 
-    public function file(): ?string;
+    public function argv(): ArgvInterface;
+
+    public function config(): ConfigInterface;
 }

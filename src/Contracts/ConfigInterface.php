@@ -1,13 +1,28 @@
 <?php
 
-namespace Mpietrucha\Zed\Pint\Contracts;
+namespace Mpietrucha\Pint\Contracts;
 
-interface ConfigInterface
+use Mpietrucha\Utility\Contracts\ArrayableInterface;
+use Mpietrucha\Utility\Enumerable\Contracts\EnumerableInterface;
+
+/**
+ * @extends \Mpietrucha\Utility\Contracts\ArrayableInterface<int, string>
+ */
+interface ConfigInterface extends ArrayableInterface
 {
-    public function file(): ?string;
+    public function file(): string;
 
     /**
-     * @return array<int, string>
+     * @return \Mpietrucha\Utility\Enumerable\Contracts\EnumerableInterface<int, mixed>
      */
-    public function excluded(): array;
+    public function get(): EnumerableInterface;
+
+    /**
+     * @return \Mpietrucha\Utility\Enumerable\Contracts\EnumerableInterface<int, mixed>
+     */
+    public function excludes(): EnumerableInterface;
+
+    public function excluded(string $path): bool;
+
+    public function included(string $path): bool;
 }
