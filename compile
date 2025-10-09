@@ -4,7 +4,7 @@ dev="symfony/var-dumper phpstan/phpstan brainmaestro/composer-git-hooks ergebnis
 
 composer remove $dev --dev --no-scripts --quiet
 
-php -d error_reporting="E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED" ~/.composer/vendor/bin/box compile
+php -d error_reporting="E_ALL & ~E_DEPRECATED" ~/.composer/vendor/bin/box compile
 
 composer config allow-plugins.ergebnis/composer-normalize true --quiet
 composer require $dev --dev --no-scripts --quiet
