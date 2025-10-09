@@ -2,31 +2,77 @@
 
 namespace Mpietrucha\Pint\Environment\Argv;
 
+use Mpietrucha\Pint\Concerns\InteractsWithPath;
 use Mpietrucha\Utility\Arr;
-use Mpietrucha\Utility\Concerns\Compatible;
+use Mpietrucha\Utility\Concerns\Creatable;
+use Mpietrucha\Utility\Concerns\Passable;
 use Mpietrucha\Utility\Contracts\CompatibleInterface;
+use Mpietrucha\Utility\Contracts\CreatableInterface;
+use Mpietrucha\Utility\Contracts\PassableInterface;
 use Mpietrucha\Utility\Filesystem;
-use Mpietrucha\Utility\Type;
+use Mpietrucha\Utility\Normalizer;
 
-abstract class Path implements CompatibleInterface
+class Path implements CompatibleInterface, CreatableInterface, PassableInterface
 {
-    use Compatible;
+    use Creatable, InteractsWithPath, Passable;
 
     /**
-     * @param  array<int, mixed>  $argv
+     * @var array<int, string>
      */
-    public static function get(array $argv): ?string
-    {
-        $candidates = [Arr::first($argv), Arr::last($argv)];
+    protected static array $excludes = [
+        '--config',
+        '--cache-file',
+        '--output-to-file',
+    ];
 
-        return Arr::first([
-            Arr::last($argv),
-            Arr::first($argv),
-        ], static::compatible(...));
+    protected ?string $previous = null;
+
+    public function __invoke(mixed $value): bool
+    {
+        if (static::incompatible($value)) {
+            return false;
+        }
+
+        return $this->get($value, $this->record($value));
     }
 
-    protected static function compatibility(mixed $path): bool
+    public function get(string $value, ?string $previous = null): bool
     {
-        return Type::string($path) && Filesystem::exists($path);
+        return $this->included($previous) && Filesystem::exists($value);
+    }
+
+    public function excluded(mixed $value): bool
+    {
+        return Arr::contains(static::excludes(), $value);
+    }
+
+    final public function included(mixed $value): bool
+    {
+        return $this->excluded($value) |> Normalizer::not(...);
+    }
+
+    protected function record(string $value): ?string
+    {
+        $previous = $this->previous();
+
+        return $this->pass($previous)->remember($value);
+    }
+
+    protected function remember(string $previous): void
+    {
+        $this->previous = $previous;
+    }
+
+    protected function previous(): ?string
+    {
+        return $this->previous;
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    protected static function excludes(): array
+    {
+        return static::$excludes;
     }
 }

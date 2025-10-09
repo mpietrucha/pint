@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\ArgvInput;
 abstract class Input
 {
     /**
-     * @return array<int, mixed>
+     * @return array<int, string>
      */
     public static function capture(): array
     {

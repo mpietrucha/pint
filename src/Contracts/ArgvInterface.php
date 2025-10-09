@@ -5,9 +5,12 @@ namespace Mpietrucha\Pint\Contracts;
 use Mpietrucha\Utility\Enumerable\Contracts\EnumerableInterface;
 
 /**
- * @extends \Mpietrucha\Utility\Enumerable\Contracts\EnumerableInterface<int, mixed>
+ * @extends \Mpietrucha\Utility\Enumerable\Contracts\EnumerableInterface<int, string>
  */
 interface ArgvInterface extends EnumerableInterface
 {
-    public function path(): ?string;
+    /**
+     * @return \Mpietrucha\Utility\Enumerable\Contracts\EnumerableInterface<int, string>
+     */
+    public function paths(): EnumerableInterface;
 }

@@ -67,7 +67,7 @@ class Config implements ConfigInterface, CreatableInterface
 
     public function excluded(string $path): bool
     {
-        return Config\Filter::create($path) |> $this->excludes()->first(...) |> Normalizer::boolean(...);
+        return Config\Excluded::create($path) |> $this->excludes()->first(...) |> Normalizer::boolean(...);
     }
 
     final public function included(string $path): bool

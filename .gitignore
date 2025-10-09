@@ -1,3 +1,5 @@
+a.php
+.DS_Store
 vendor
 composer.lock
 cghooks.lock
