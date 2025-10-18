@@ -1,6 +1,9 @@
-a.php
+Thumbs.db
 .DS_Store
 vendor
+node_modules
 composer.lock
-cghooks.lock
 .phpactor.json
+a.php
+
+cghooks.lock

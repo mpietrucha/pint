@@ -1,6 +1,6 @@
 {
     "name": "mpietrucha/pint",
-    "description": "Laravel Pint utils.",
+    "description": "Extended Laravel Pint.",
     "license": "MIT",
     "type": "library",
     "version": "1.0.0",
@@ -17,7 +17,6 @@
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^3.0",
         "ergebnis/composer-normalize": "^2.48",
-        "laravel/pint": "^1.22",
         "mpietrucha/utility": "^1.0",
         "phpstan/phpstan": "^2.1",
         "symfony/console": "^7.3",
@@ -49,18 +48,17 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "@hooks:add",
-            "@prettier:config"
+            "@hooks:add"
         ],
         "post-update-cmd": [
             "@hooks:update",
             "@composer normalize"
         ],
-        "compile": "./compile",
+        "compile": "./build/compile",
         "compile:add": "git add bin/pint > /dev/null",
         "hooks:add": "cghooks add --ignore-lock",
         "hooks:update": "cghooks update",
-        "lint": "pint --verbose --parallel",
+        "lint": "@php pint --verbose --parallel",
         "prettier:config": "curl -sSLO https://raw.githubusercontent.com/mpietrucha/prettier/refs/heads/main/dist/.prettierrc",
         "test": [
             "@test:lint",
@@ -68,5 +66,6 @@
         ],
         "test:lint": "@lint --test",
         "test:types": "phpstan analyse --ansi"
-    }
+    },
+    "$schema": "https://getcomposer.org/schema.json"
 }

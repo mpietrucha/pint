@@ -22,7 +22,7 @@ class Environment implements CreatableInterface, EnvironmentInterface
 
     public function executable(): ExecutableInterface
     {
-        return $this->executable ??= Environment\Executable::find();
+        return $this->executable ??= Environment\Executable::get();
     }
 
     public function argv(): ArgvInterface

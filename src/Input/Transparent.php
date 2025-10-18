@@ -10,7 +10,7 @@ use Mpietrucha\Utility\Contracts\CreatableInterface;
 use Mpietrucha\Utility\Stream\Contracts\StreamInterface;
 use Symfony\Component\Process\Process;
 
-class None implements CreatableInterface, InputInterface
+class Transparent implements CreatableInterface, InputInterface
 {
     use Compatible, Creatable;
 

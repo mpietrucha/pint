@@ -9,7 +9,7 @@ use Mpietrucha\Utility\Stream;
 use Mpietrucha\Utility\Stream\Contracts\StreamInterface;
 use Symfony\Component\Process\Process;
 
-class Std extends None
+class Std extends Transparent
 {
     public function __construct(protected ?StreamInterface $response = null)
     {

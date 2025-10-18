@@ -1,10 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+use Mpietrucha\Pint\Application;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Mpietrucha\Utility\Error\Level;
-
-Level::set(Level::ALL ^ Level::DEPRECATED);
-
-\Mpietrucha\Pint\Application::create()->run();
+Application::create()->run();

@@ -44,7 +44,7 @@ abstract class Input
     {
         return [
             Input\Std::create(),
-            Input\None::create(),
+            Input\Transparent::create(),
         ];
     }
 }

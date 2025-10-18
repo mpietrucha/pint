@@ -2,35 +2,46 @@
 
 namespace Mpietrucha\Pint\Environment\Executable;
 
-use Mpietrucha\Utility\Finder;
+use Mpietrucha\Utility\Filesystem;
+use Mpietrucha\Utility\Stream;
+use Mpietrucha\Utility\Stream\Contracts\StreamInterface;
 
 abstract class File
 {
-    public static function directory(): string
+    protected static string $url = 'https://github.com/laravel/pint/raw/refs/heads/main/builds/pint';
+
+    public static function url(): string
     {
-        return 'vendor/bin';
+        return static::$url;
     }
 
-    public static function name(): string
+    public static function get(): string
     {
-        return 'pint';
+        $destination = static::destination();
+
+        return Filesystem::executable($destination) ? $destination : static::download($destination);
     }
 
-    public static function altitude(): int
+    public static function download(?string $destination = null): string
     {
-        return 3;
+        $source = Stream::open(static::url(), 'r');
+
+        return static::store($destination, $source);
     }
 
-    public static function find(): string
+    public static function destination(): string
     {
-        $finder = __DIR__ |> Finder::create()->files()->in(...);
+        return Filesystem\Temporary::get('pint');
+    }
 
-        static::altitude() |> $finder->climb(...);
+    protected static function store(?string $destination, StreamInterface $source): string
+    {
+        $destination ??= static::destination();
 
-        static::directory() |> $finder->path(...);
+        Filesystem::put($destination, $source->resource());
 
-        static::name() |> $finder->name(...);
+        Filesystem::chmod($destination, 0755);
 
-        return $finder->get()->firstOrFail();
+        return $destination;
     }
 }

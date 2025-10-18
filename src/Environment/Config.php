@@ -3,7 +3,7 @@
 namespace Mpietrucha\Pint\Environment;
 
 use Mpietrucha\Pint\Contracts\ConfigInterface;
-use Mpietrucha\Pint\Exception\ConfigException;
+use Mpietrucha\Pint\Exception\ConfigFileException;
 use Mpietrucha\Utility\Collection;
 use Mpietrucha\Utility\Concerns\Arrayable;
 use Mpietrucha\Utility\Concerns\Creatable;
@@ -32,7 +32,7 @@ class Config implements ConfigInterface, CreatableInterface
             return;
         }
 
-        ConfigException::for($file)->throw();
+        ConfigFileException::for($file)->throw();
     }
 
     public static function find(): static

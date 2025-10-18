@@ -1,0 +1,32 @@
+#!/bin/bash
+
+essentials="illuminate/collections \
+    illuminate/filesystem \
+    illuminate/support \
+    illuminate/macroable \
+    illuminate/contracts \
+    illuminate/conditionable \
+    laravel/serializable-closure \
+    mpietrucha/utility \
+    nyholm/psr7 \
+    psr/http-message \
+    symfony/console \
+    symfony/process \
+    symfony/finder \
+    symfony/filesystem \
+    symfony/var-dumper"
+
+arguments=""
+for essential in $essentials; do
+    arguments="$arguments -not -path vendor/$essential"
+done
+
+find vendor -type d -mindepth 2 -maxdepth 2 $arguments -exec rm -r {} +
+
+find vendor -type d -empty -maxdepth 1 -delete
+
+composer dump-autoload --quiet
+
+php -d error_reporting="E_ALL & ~E_DEPRECATED" ~/.composer/vendor/bin/box compile
+
+composer update --quiet
