@@ -5,6 +5,9 @@ namespace Mpietrucha\Pint\Concerns;
 use Mpietrucha\Utility\Concerns\Compatible;
 use Mpietrucha\Utility\Type;
 
+/**
+ * @internal
+ */
 trait InteractsWithPath
 {
     use Compatible;
