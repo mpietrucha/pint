@@ -1,10 +1,21 @@
+* text=auto eol=lf
+
+*.blade.php diff=html
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+*.php diff=php
+
 /.gitattributes export-ignore
 /.gitignore export-ignore
-/README.md export-ignore
-/src export-ignore
-/box.json export-ignore
-/phpstan.neon export-ignore
+/.prettierrc
 /pint.json export-ignore
-/pint export-ignore
+/phpstan.neon export-ignore
+/README.md export-ignore
+/.github export-ignore
+
+/box.json export-ignore
 /cghooks.lock export-ignore
+/src export-ignore
+/pint export-ignore
 /build export-ignore
