@@ -8,6 +8,8 @@ use Mpietrucha\Utility\Enumerable\Contracts\EnumerableInterface;
 
 /**
  * @extends \Mpietrucha\Utility\Collection<int, string>
+ *
+ * @phpstan-ignore class.missingImplements
  */
 class Argv extends Collection implements ArgvInterface
 {
