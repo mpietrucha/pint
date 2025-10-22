@@ -8,6 +8,6 @@ class ConfigFileException extends InvalidArgumentException
 {
     public function configure(string $file): string
     {
-        return '`%s` must be a file path to an existing pint config';
+        return '`%s` must be a file path to an existing Pint configuration';
     }
 }

@@ -8,6 +8,6 @@ class ExecutableFileException extends InvalidArgumentException
 {
     public function configure(string $file): string
     {
-        return '`%s` must be a file path to an existing, executable pint binary';
+        return '`%s` must be a valid path to an existing, executable Pint binary';
     }
 }

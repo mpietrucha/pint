@@ -8,7 +8,7 @@
 
 /.gitattributes export-ignore
 /.gitignore export-ignore
-/.prettierrc
+/.prettierrc export-ignore
 /pint.json export-ignore
 /phpstan.neon export-ignore
 /README.md export-ignore
