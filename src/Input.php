@@ -4,6 +4,8 @@ namespace Mpietrucha\Pint;
 
 use Mpietrucha\Pint\Contracts\EnvironmentInterface;
 use Mpietrucha\Pint\Contracts\InputInterface;
+use Mpietrucha\Pint\Input\Std;
+use Mpietrucha\Pint\Input\Transparent;
 use Mpietrucha\Utility\Arr;
 use Mpietrucha\Utility\Collection;
 
@@ -43,8 +45,8 @@ abstract class Input
     protected static function defaults(): array
     {
         return [
-            Input\Std::create(),
-            Input\Transparent::create(),
+            Std::create(),
+            Transparent::create(),
         ];
     }
 }

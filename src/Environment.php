@@ -6,6 +6,9 @@ use Mpietrucha\Pint\Contracts\ArgvInterface;
 use Mpietrucha\Pint\Contracts\ConfigInterface;
 use Mpietrucha\Pint\Contracts\EnvironmentInterface;
 use Mpietrucha\Pint\Contracts\ExecutableInterface;
+use Mpietrucha\Pint\Environment\Argv;
+use Mpietrucha\Pint\Environment\Config;
+use Mpietrucha\Pint\Environment\Executable;
 use Mpietrucha\Utility\Concerns\Creatable;
 use Mpietrucha\Utility\Contracts\CreatableInterface;
 
@@ -22,16 +25,16 @@ class Environment implements CreatableInterface, EnvironmentInterface
 
     public function executable(): ExecutableInterface
     {
-        return $this->executable ??= Environment\Executable::get();
+        return $this->executable ??= Executable::get();
     }
 
     public function argv(): ArgvInterface
     {
-        return $this->argv ??= Environment\Argv::capture();
+        return $this->argv ??= Argv::capture();
     }
 
     public function config(): ConfigInterface
     {
-        return $this->config ??= Environment\Config::find();
+        return $this->config ??= Config::find();
     }
 }

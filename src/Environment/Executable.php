@@ -3,6 +3,7 @@
 namespace Mpietrucha\Pint\Environment;
 
 use Mpietrucha\Pint\Contracts\ExecutableInterface;
+use Mpietrucha\Pint\Environment\Executable\File;
 use Mpietrucha\Pint\Exception\ExecutableFileException;
 use Mpietrucha\Utility\Concerns\Creatable;
 use Mpietrucha\Utility\Concerns\Stringable;
@@ -24,7 +25,7 @@ class Executable implements CreatableInterface, ExecutableInterface
 
     public static function get(): static
     {
-        return Executable\File::get() |> static::create(...);
+        return File::get() |> static::create(...);
     }
 
     public function toString(): string

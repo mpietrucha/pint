@@ -3,6 +3,7 @@
 namespace Mpietrucha\Pint\Environment\Executable;
 
 use Mpietrucha\Utility\Filesystem;
+use Mpietrucha\Utility\Filesystem\Temporary;
 use Mpietrucha\Utility\Stream;
 use Mpietrucha\Utility\Stream\Contracts\StreamInterface;
 
@@ -31,7 +32,7 @@ abstract class File
 
     public static function destination(): string
     {
-        return Filesystem\Temporary::get('pint');
+        return Temporary::get('pint');
     }
 
     protected static function store(?string $destination, StreamInterface $source): string

@@ -3,6 +3,8 @@
 namespace Mpietrucha\Pint\Environment;
 
 use Mpietrucha\Pint\Contracts\ArgvInterface;
+use Mpietrucha\Pint\Environment\Argv\Input;
+use Mpietrucha\Pint\Environment\Argv\Path;
 use Mpietrucha\Utility\Collection;
 use Mpietrucha\Utility\Enumerable\Contracts\EnumerableInterface;
 
@@ -20,11 +22,11 @@ class Argv extends Collection implements ArgvInterface
 
     public static function capture(): static
     {
-        return Argv\Input::capture() |> static::create(...);
+        return Input::capture() |> static::create(...);
     }
 
     public function paths(): EnumerableInterface
     {
-        return $this->paths ??= Argv\Path::create() |> $this->collect()->filter(...);
+        return $this->paths ??= Path::create() |> $this->collect()->filter(...);
     }
 }

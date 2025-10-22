@@ -3,6 +3,8 @@
 namespace Mpietrucha\Pint\Environment;
 
 use Mpietrucha\Pint\Contracts\ConfigInterface;
+use Mpietrucha\Pint\Environment\Config\Excluded;
+use Mpietrucha\Pint\Environment\Config\File;
 use Mpietrucha\Pint\Exception\ConfigFileException;
 use Mpietrucha\Utility\Collection;
 use Mpietrucha\Utility\Concerns\Arrayable;
@@ -37,7 +39,7 @@ class Config implements ConfigInterface, CreatableInterface
 
     public static function find(): static
     {
-        return Config\File::find() |> static::create(...);
+        return File::find() |> static::create(...);
     }
 
     public function file(): string
@@ -67,7 +69,7 @@ class Config implements ConfigInterface, CreatableInterface
 
     public function excluded(string $path): bool
     {
-        return Config\Excluded::create($path) |> $this->excludes()->first(...) |> Normalizer::boolean(...);
+        return Excluded::create($path) |> $this->excludes()->first(...) |> Normalizer::boolean(...);
     }
 
     final public function included(string $path): bool

@@ -3,7 +3,7 @@
 namespace Mpietrucha\Pint\Input;
 
 use Mpietrucha\Pint\Contracts\EnvironmentInterface;
-use Mpietrucha\Utility\Filesystem;
+use Mpietrucha\Utility\Filesystem\Stream as Filesystem;
 use Mpietrucha\Utility\Normalizer;
 use Mpietrucha\Utility\Stream;
 use Mpietrucha\Utility\Stream\Contracts\StreamInterface;
@@ -17,7 +17,7 @@ class Std extends Transparent
 
     public static function capture(): StreamInterface
     {
-        return Stream::input()->unleash() |> Filesystem\Stream::temporary()->paste(...);
+        return Stream::input()->unleash() |> Filesystem::temporary()->paste(...);
     }
 
     public function due(EnvironmentInterface $environment): bool
