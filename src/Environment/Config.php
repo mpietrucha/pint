@@ -59,7 +59,7 @@ class Config implements ConfigInterface, CreatableInterface
 
     public function excludes(): EnumerableInterface
     {
-        /** @phpstan-ignore-next-line */
+        /** @phpstan-ignore-next-line argument.type */
         return $this->excludes ??= $this->get()->only([
             'notName',
             'exclude',
