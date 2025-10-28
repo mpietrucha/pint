@@ -14,3 +14,8 @@ overrides:
       - "*.blade.php"
     options:
       parser: blade
+  - files:
+      - "*.css"
+      - "*.vue"
+    options:
+      singleQuote: false
